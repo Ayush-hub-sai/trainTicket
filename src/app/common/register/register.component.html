@@ -1,0 +1,44 @@
+<ng-container>
+  <div class="modal-header">
+    <h4 class="modal-title">Register</h4>
+    <span class="pull-right">
+      <button type="button " class="pull-right close btn btn-sm btn-outline-danger" (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </span>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-6">
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" class="form-control" [(ngModel)]="registerObj.firstName">
+      </div>
+      <div class="col-6">
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" class="form-control" [(ngModel)]="registerObj.lastName">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="registerObj.email">
+      </div>
+      <div class="col-6">
+        <label for="mobile">Mobile Number</label>
+        <input type="text" class="form-control" name="mobile" [(ngModel)]="registerObj.phone">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="registerObj.password">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="register()">Register</button>
+
+  </div>
+</ng-container>

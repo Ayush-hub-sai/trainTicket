@@ -1,0 +1,57 @@
+<div class="container-fluid bg-secondary p-4">
+  <div class="row">
+    <div class="col-4 px-4">
+      <select id="fromStation" class="form-select" [(ngModel)]="fromStationId">
+        <option value="From Station">From Station</option>
+        <option [value]="station.stationID" *ngFor="let station of stationList">{{station.stationName}}
+        </option>
+      </select>
+    </div>
+    <div class="col-4 px-4">
+      <select id="toStation" class="form-select" [(ngModel)]="toStationId">
+        <option value="To Station">Select To Station</option>
+        <option [value]="station.stationID" *ngFor="let station of stationList">{{station.stationName}}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-2 px-2">
+      <input type="date" id="form3Example4c" class="form-control" [(ngModel)]="searchDate" />
+    </div>
+    <div class="col-2 text-end">
+      <button type="button" class="btn btn-primary btn-sm" (click)="search()">Modify Search</button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid pt-2">
+  <p style="border: 1px solid;padding: 5px;margin-top: 5px;"><strong>{{trainList.length}}</strong> Result Found For
+    <strong>{{getFromStation()}}</strong>
+    {{getToStation()}} <strong>Nagpur</strong> {{searchDate |date:'dd-MM-yyyy'}}</p>
+  <div class="row">
+    <div class="col-6 mt-2" *ngFor="let train of trainList">
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          {{train.trainName}} ({{train.trainNo}})
+        </div>
+        <div class="card-body">
+          <div class="row pb-2">
+            <div class="col-5">
+              {{train.departureTime}} | {{train.departureStationName}} | {{train.departureDate | date:'dd-MM-yyyy'}}
+            </div>
+            <div class="col-2">
+              15:05 hrs
+            </div>
+            <div class="col-5 text-end">
+              {{train.arrivalTime}} | {{train.arrivalStationName}}
+              <!-- | {{train.departureDate | date:'dd-MM-yyyy'}} -->
+            </div>
+          </div>
+          <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">Book Now</button>
+          <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">Check
+            Availability</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
