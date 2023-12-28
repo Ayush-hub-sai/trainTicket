@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { IStation, ResponseModel } from 'src/app/interface/railywayInterface';
 import { RailwayService } from 'src/app/services/railway/railway.service';
 
@@ -14,7 +15,11 @@ export class HomeComponent implements OnInit {
   fromStationId: string | null = 'From Station'; // Set the default placeholder
   toStationId: string | null = 'To Station';
   traveldate: any
-  constructor(private _railwayservice: RailwayService, private router: Router) { }
+  constructor(private _railwayservice: RailwayService, private router: Router, public _translateService: TranslateService) {
+    this._railwayservice.myBehaviorSubject.subscribe((res: any) => {
+      _translateService.use(res)
+    })
+  }
 
   ngOnInit(): void {
     this.getAllStations()
@@ -28,8 +33,5 @@ export class HomeComponent implements OnInit {
 
   search() {
     this.router.navigate(['search', this.fromStationId, this.toStationId, this.traveldate])
-    console.log(this.traveldate);
-    console.log(this.fromStationId);
-    console.log(this.toStationId);
   }
 }

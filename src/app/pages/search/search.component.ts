@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStation, ResponseModel } from 'src/app/interface/railywayInterface';
 import { RailwayService } from 'src/app/services/railway/railway.service';
+import { BookingComponent } from '../booking/booking.component';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +17,7 @@ export class SearchComponent implements OnInit {
   trainList: any[] = []
   stationList: IStation[] = []
 
-  constructor(private activateUrl: ActivatedRoute, private _railwayService: RailwayService) {
+  constructor(private modalService: NgbModal, private activateUrl: ActivatedRoute, private _railwayService: RailwayService) {
     this.activateUrl?.params?.subscribe((res: any) => {
       this.fromStationId = res?.fromStation
       this.toStationId = res?.toStation
@@ -45,11 +47,20 @@ export class SearchComponent implements OnInit {
   }
 
   getFromStation() {
-    let arrivalStationName: any = ''
-    return arrivalStationName = this.trainList.find((train: any) => train.arrivalStationName)
+    return this.trainList[0]?.departureStationName
   }
 
   getToStation() {
-
+    return this.trainList[0]?.arrivalStationName
   }
+
+  bookNow(train: any) {
+    const modalRef = this.modalService.open(BookingComponent, {
+      size: 'lg',
+      centered: true
+    });
+
+    modalRef.componentInstance.trainData = train
+  }
+
 }

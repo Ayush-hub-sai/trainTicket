@@ -27,7 +27,7 @@
 <div class="container-fluid pt-2">
   <p style="border: 1px solid;padding: 5px;margin-top: 5px;"><strong>{{trainList.length}}</strong> Result Found For
     <strong>{{getFromStation()}}</strong>
-    {{getToStation()}} <strong>Nagpur</strong> {{searchDate |date:'dd-MM-yyyy'}}</p>
+    To <strong>{{getToStation()}}</strong> {{searchDate |date:'dd-MM-yyyy'}}</p>
   <div class="row">
     <div class="col-6 mt-2" *ngFor="let train of trainList">
       <div class="card">
@@ -47,8 +47,9 @@
               <!-- | {{train.departureDate | date:'dd-MM-yyyy'}} -->
             </div>
           </div>
-          <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">Book Now</button>
-          <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">Check
+          <button class="btn btn-success btn-sm" (click)="bookNow(train)">Book Now</button>
+          &nbsp;
+          <button class="btn btn-secondary btn-sm">Check
             Availability</button>
         </div>
       </div>

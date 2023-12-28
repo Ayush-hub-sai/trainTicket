@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CONSTANT } from 'src/app/constantApi/api';
 import { ResponseModel } from 'src/app/interface/railywayInterface';
 import { environment } from 'src/environments/environment';
@@ -13,6 +13,8 @@ export class RailwayService {
   public apiUrl: any = environment.apiUrl;
 
   private apiEndPoint: any = CONSTANT.ENDPOINTS;
+
+  myBehaviorSubject = new BehaviorSubject<any>('en');
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +33,11 @@ export class RailwayService {
 
     // Make the GET request with the constructed URL and query parameters
     return this.http.get<ResponseModel>(url, { params });
+  }
+
+  bookTicket(obj: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}${this.apiEndPoint.BOOK_TRAIN}`, obj);
+
   }
 
 }

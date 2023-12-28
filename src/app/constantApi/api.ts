@@ -3,12 +3,12 @@ export const CONSTANT: any = {
         GET_ALL_STATIONS: "GetAllStations",
         ADD_BULK_TRAIN_STATIONS: "AddBulkTrainStations",
         DELETE_STATION_BY_STATION_ID: "DeleteStationByStationId",
-        LOGIN: "Login",
+        LOGIN: "Login", //
         GET_ALL_PASSENGERS: "GetAllPassengers",
-        ADD_UPDATE_PASSENGERS: "AddUpdatePassengers",
+        ADD_UPDATE_PASSENGERS: "AddUpdatePassengers", //
         DELETE_PASSENGER_BY_PASSENGER_ID: "DeletePassengerByPassengerId",
         GET_ALL_TRAINS: "GetAllTrains",
-        GET_TRAINS_BETWEEN_STATIONS: "GetTrainsBetweenStations",
+        GET_TRAINS_BETWEEN_STATIONS: "GetTrainsBetweenStations", //
         ADD_NEW_TRAIN: "AddNewTrain",
         DELETE_TRAIN_BY_TRAIN_ID: "DeleteTrainByTrainId",
         GET_TRAIN_BOOKINGS: "GetTrainBookings",
