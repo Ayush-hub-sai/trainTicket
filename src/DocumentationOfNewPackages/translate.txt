@@ -1,0 +1,49 @@
+1.a-npm i @ngx-translate/core
+1.b-npm install @ngx-translate/http-loader
+2. app module.ts
+	import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+	import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+	
+	export function HttpLoaderFactory(http: HttpClient) {
+	  return new TranslateHttpLoader(http);
+	}
+	
+	imports:[
+	TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+	]
+3. header.ts
+	a-  
+		constructor(public _translateService: TranslateService, private _railwayService: RailwayService) {
+
+		_translateService.addLangs(['en', 'hi'])
+		_translateService.setDefaultLang('en')
+
+		this._railwayService.myBehaviorSubject.subscribe((res: any) => {
+		  _translateService.use(res)
+		})
+	  }
+  
+  
+	  changeLanguage(event: any) {
+		const selectedLanguage = event.target.value;
+		this._railwayService.myBehaviorSubject.next(selectedLanguage)
+	  }
+	
+	b- html
+		<select class="form-control" (change)="changeLanguage($event)">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+        </select>
+4.In other Document
+		this._railwayservice.myBehaviorSubject.subscribe((res: any) => {
+		  _translateService.use(res)
+		})
+		
+5. In all html
+        {{ "Book_Ticket" | translate}}        
