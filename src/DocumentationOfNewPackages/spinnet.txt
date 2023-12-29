@@ -1,0 +1,12 @@
+1. npm i ngx-spinner
+
+2. app module
+	  BrowserAnimationsModule,
+		NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+3. "node_modules/ngx-spinner/animations/square-jelly-box.css"	
+4. html	
+	<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+	</ngx-spinner>
+5.	private spinner: NgxSpinnerService
+	this.spinner.show()

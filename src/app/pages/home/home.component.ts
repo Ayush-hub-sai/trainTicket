@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { IStation, ResponseModel } from 'src/app/interface/railywayInterface';
 import { RailwayService } from 'src/app/services/railway/railway.service';
 
@@ -21,14 +22,14 @@ export class HomeComponent implements OnInit {
     private _railwayservice: RailwayService,
     private router: Router,
     public _translateService: TranslateService,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService) {
     this._railwayservice.myBehaviorSubject.subscribe((res: any) => {
       _translateService.use(res)
     })
   }
 
   ngOnInit(): void {
-    this.spinner.show()
     this.getAllStations()
   }
 

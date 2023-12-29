@@ -1,0 +1,9 @@
+1. npm install ngx-toastr --save
+2. "node_modules/ngx-toastr/toastr.css"
+3.  ToastrModule.forRoot({
+      timeOut: 5000,
+      progressBar: true,
+      closeButton: true,
+    }),
+4. private toastr: ToastrService
+    this.toastr.success(message)
