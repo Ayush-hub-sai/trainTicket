@@ -4,6 +4,7 @@ import { login } from 'src/app/interface/authInterface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { RailwayService } from 'src/app/services/railway/railway.service';
 import { RegisterComponent } from '../register/register.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,14 @@ export class LoginComponent {
   @Output() loginData: EventEmitter<any> = new EventEmitter();
 
   constructor(public activeModal: NgbActiveModal,
-    private _authService: AuthService, private modalService: NgbModal) { }
-
+    private _authService: AuthService, private modalService: NgbModal,
+    private _railwayService: RailwayService,
+    public _translateService: TranslateService,
+  ) {
+    this._railwayService.myBehaviorSubject.subscribe((res: any) => {
+      _translateService.use(res)
+    })
+  }
 
   login() {
     if (this.register) {
@@ -41,4 +48,5 @@ export class LoginComponent {
       centered: true
     });
   }
+  
 }

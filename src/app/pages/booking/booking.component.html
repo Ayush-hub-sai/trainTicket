@@ -1,6 +1,6 @@
 <ng-container>
   <div class="modal-header">
-    <h4 class="modal-title">Book Ticket</h4>
+    <h4 class="modal-title">{{ "BOOK_TICKET" | translate}}</h4>
     <span class="pull-right">
       <button type="button " class="pull-right close btn btn-sm btn-outline-danger" (click)="activeModal.dismiss()">
         <span aria-hidden="true">&times;</span>
@@ -12,24 +12,24 @@
 
     <div class="row">
       <div class="col-6">
-        Train: <span><strong>{{trainData.trainName}}</strong></span>
+        {{ "TRAIN" | translate}}: <span><strong>{{trainData.trainName}}</strong></span>
       </div>
       <div class="col-6 text-end">
-        <span>Time: <span><strong>{{"u"}}</strong></span></span>
+        <span>{{ "TIME" | translate}}: <span><strong>{{"u"}}</strong></span></span>
       </div>
     </div>
 
     <div class="row">
       <div class="col-5">
-        <label for="passengerName">Passenger Name</label>
+        <label for="passengerName">{{ "PASSENGER_NAME" | translate}}</label>
         <input type="text" class="form-control" name="passengerName" [(ngModel)]="bookPassenger.passengerName">
       </div>
       <div class="col-5">
-        <label for="age">Age</label>
+        <label for="age">{{ "AGE" | translate}}</label>
         <input type="text" class="form-control" name="age" [(ngModel)]="bookPassenger.age">
       </div>
       <div class="col-2 text-end">
-        <button type="button" class="btn btn-primary" (click)="AddPassenger()">Add</button>
+        <button type="button" class="btn btn-primary" (click)="AddPassenger()">{{ "ADD" | translate}}</button>
       </div>
     </div>
     <br>
@@ -37,10 +37,10 @@
       <table class="table table-bordered" *ngIf="passengerList.length>0">
         <thead>
           <tr>
-            <th>Sr</th>
-            <th>Passenger Name</th>
-            <th>Age</th>
-            <th>Action</th>
+            <th>{{ "SR" | translate}}</th>
+            <th>{{ "PASSENGER_NAME" | translate}}</th>
+            <th>{{ "AGE" | translate}}</th>
+            <th>{{ "NO_RECORDS_FOUND" | translate}}</th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +48,8 @@
             <td>{{i+1}}</td>
             <td>{{passenger.passengerName}}</td>
             <td>{{passenger.age}}</td>
-            <td><button type="button" class="btn btn-sm btn-danger" (click)="remove(i)">Remove</button></td>
+            <td><button type="button" class="btn btn-sm btn-danger"
+                (click)="remove(i)">{{"REMOVE" | translate}}</button></td>
           </tr>
         </tbody>
       </table>
@@ -57,12 +58,12 @@
     <section>
       <div class="container">
         <div *ngIf="passengerList.length==0" class="text-center">
-          <h6>No Records Found...</h6>
+          <h6>{{ "NO_RECORDS_FOUND" | translate}}...</h6>
         </div>
       </div>
     </section>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="BookTicket()">Book Ticket</button>
+    <button type="button" class="btn btn-success" (click)="BookTicket()">{{ "BOOK_TICKET" | translate}}</button>
   </div>
 </ng-container>

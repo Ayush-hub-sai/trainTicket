@@ -19,15 +19,15 @@
       <input type="date" id="form3Example4c" class="form-control" [(ngModel)]="searchDate" />
     </div>
     <div class="col-2 text-end">
-      <button type="button" class="btn btn-primary btn-sm" (click)="search()">Modify Search</button>
+      <button type="button" class="btn btn-primary btn-sm" (click)="search()">{{ "MODIFY_SEARCH" | translate}}</button>
     </div>
   </div>
 </div>
 
 <div class="container-fluid pt-2">
-  <p style="border: 1px solid;padding: 5px;margin-top: 5px;"><strong>{{trainList.length}}</strong> Result Found For
+  <p style="border: 1px solid;padding: 5px;margin-top: 5px;"><strong>{{trainList.length}}</strong> {{ "RESULT_FOUND_FOR" | translate}}
     <strong>{{getFromStation()}}</strong>
-    To <strong>{{getToStation()}}</strong> {{searchDate |date:'dd-MM-yyyy'}}</p>
+    {{ "TO" | translate}} <strong>{{getToStation()}}</strong> {{searchDate |date:'dd-MM-yyyy'}}</p>
   <div class="row">
     <div class="col-6 mt-2" *ngFor="let train of trainList">
       <div class="card">
@@ -47,10 +47,9 @@
               <!-- | {{train.departureDate | date:'dd-MM-yyyy'}} -->
             </div>
           </div>
-          <button class="btn btn-success btn-sm" (click)="bookNow(train)">Book Now</button>
+          <button class="btn btn-success btn-sm" (click)="bookNow(train)">{{ "BOOK_NOW" | translate}}</button>
           &nbsp;
-          <button class="btn btn-secondary btn-sm">Check
-            Availability</button>
+          <button class="btn btn-secondary btn-sm">{{ "CHECK_AVAILABILITY" | translate}}</button>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tick } from '@angular/core/testing';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 import { BookTicket, TrainAppBookingPassenger } from 'src/app/interface/railywayInterface';
 import { RailwayService } from 'src/app/services/railway/railway.service';
 
@@ -23,7 +24,13 @@ export class BookingComponent implements OnInit {
     }
   }
 
-  constructor(public activeModal: NgbActiveModal, private _railwayService: RailwayService) { }
+  constructor(public activeModal: NgbActiveModal,
+    private _railwayService: RailwayService,
+    public _translateService: TranslateService,) {
+    this._railwayService.myBehaviorSubject.subscribe((res: any) => {
+      _translateService.use(res)
+    })
+  }
 
   AddPassenger() {
     const passenger = { ... this.bookPassenger }

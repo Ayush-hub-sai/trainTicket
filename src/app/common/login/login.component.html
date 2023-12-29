@@ -1,6 +1,6 @@
 <ng-container>
   <div class="modal-header">
-    <h4 class="modal-title">Login</h4>
+    <h4 class="modal-title">{{"LOGIN"| translate}}</h4>
     <span class="pull-right">
       <button type="button " class="pull-right close btn btn-sm btn-outline-danger" (click)="activeModal.dismiss()">
         <span aria-hidden="true">&times;</span>
@@ -11,19 +11,19 @@
   <div class="modal-body">
     <div class="row">
       <div class="col">
-        <label for="phone">Mobile Number</label>
+        <label for="phone">{{ "MOBILE_NUMBER" | translate}}</label>
         <input type="text" class="form-control" name="phone" [(ngModel)]="loginObj.phone">
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <label for="password">Password</label>
+        <label for="password">{{ "PASSWORD" | translate}}</label>
         <input type="password" class="form-control" name="password" [(ngModel)]="loginObj.password">
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <a class="fw-semibold me-1" (click)="registerModal()">Register</a>
-    <button type="button" class="btn btn-success" (click)="login()">Login</button>
+    <a class="fw-semibold me-1" (click)="registerModal()">{{ "REGISTER" | translate}}</a>
+    <button type="button" class="btn btn-success" (click)="login()">{{ "LOGIN" | translate}}</button>
   </div>
 </ng-container>
