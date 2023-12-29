@@ -1,0 +1,28 @@
+1. ng add @nguniversal/express-engine
+2. npm run dev:ssr (from package.json you will get all type of added universal package)
+3. changes as per route you should code on server.ts
+    const ssrRoutes = ['/home']
+  // All regular routes use the Universal engine
+  server.get('*', (req, res) => {
+    // this condition is apply for particular server side route rendering
+    if (ssrRoutes.some((route: any) => req.url.startsWith(route))) {
+      res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    } else {
+      //this is user for normal browsing that there will not be showing ssr
+      res.sendFile(join(distFolder, 'index.html'))
+    }
+  });
+
+  return server;
+
+4. And keep all the local storage in 
+     ngOnInit(): void {
+    // this is working on while i run the project on server side. 
+    // So always try to access localstorage data on ng onint isplatformbrowser 
+    if (isPlatformBrowser(this.platformId)) {
+      const login = localStorage.getItem("loginUser")
+      if (login != null) {
+        this.loginObj = JSON.parse(login)
+      }
+    }
+  }
