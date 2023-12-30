@@ -27,6 +27,7 @@
   "TRAIN": "Train",
   "SR": "Sr",
   "ACTION": "Action",
-  "REMOVE": "Remove"
+  "REMOVE": "Remove",
+  "LOGOUT":"Log Out"
 
 }

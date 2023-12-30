@@ -15,7 +15,7 @@ export const CONSTANT: any = {
         GET_ALL_TRAINS_BOOKINGS_PASSENGER_LIST: "GetAllTrainsBookingsPassengerList",
         GET_TRAIN_BOOKING_PASSENGER_LIST_BY_TRAIN_ID: "GetTrainBookingPassengerListByTrainId",
         GET_BOOKING_BY_PASSENGER_ID: "GetBookingByPassengerId",
-        BOOK_TRAIN: "BookTrain",
+        BOOK_TRAIN: "BookTrain", //
         CANCEL_BOOKING_BY_BOOKING_ID: "CancelBookingByBookingId"
     }
 }

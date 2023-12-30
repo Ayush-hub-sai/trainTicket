@@ -14,12 +14,18 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.meta.removeTag('name=keywords')
-    this.titleData.setTitle(this.title)
+    const imageUrl = 'assets/images/irctc.png';
+    this.meta.addTag({ property: 'og:image', content: imageUrl });
+
+    // Set the title with the image and text
+    const titleWithImage = `<img src="${imageUrl}" alt="Your Alt Text"> ${this.title}`;
+    this.titleData.setTitle(this.title);
+
+    // Other meta tags
     this.meta.addTag({ name: 'keywords', content: 'Angular Project, Create Angular Project' });
     this.meta.addTag({ name: 'description', content: 'Angular project training on rsgitech.com' });
     this.meta.addTag({ name: 'author', content: 'rsgitech' });
     this.meta.addTag({ name: 'robots', content: 'index, follow' });
-    this.meta.updateTag({ name: 'keywords', content: 'Web Devlopment, Software Development' });
+    this.meta.updateTag({ name: 'keywords', content: 'Web Development, Software Development' });
   }
 }

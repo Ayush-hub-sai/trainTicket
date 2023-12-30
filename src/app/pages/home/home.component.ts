@@ -41,14 +41,15 @@ export class HomeComponent implements OnInit {
 
   search() {
     let trainObj: any = {
-      fromStation: this.fromStation.stationName,
-      toStation: this.toStation.stationName,
+      fromStation: this.fromStation,
+      toStation: this.toStation,
       date: this.traveldate
     }
 
     localStorage.setItem("trainObj", JSON.stringify(trainObj))
-    this.router.navigate(['search', this.fromStation.stationID, this.toStation.stationID, this.traveldate])
+    this.router.navigate(['train-list'])
+    // this.router.navigate(['search', this.fromStation.stationID, this.toStation.stationID, this.traveldate])
   }
 
-  
+
 }

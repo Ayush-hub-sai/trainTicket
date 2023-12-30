@@ -30,20 +30,18 @@ export class SearchComponent implements OnInit {
     private toastr: ToastrService,
     private titleData: Title, private meta: Meta) {
 
-    this.activateUrl?.params?.subscribe((res: any) => {
-      this.fromStationId = res?.fromStation
-      this.toStationId = res?.toStation
-      this.searchDate = res?.date
-    })
-
     this._railwayService.myBehaviorSubject.subscribe((res: any) => {
       _translateService.use(res)
     })
 
   }
-
+  trainObj: any;
   ngOnInit(): void {
-    
+    let temp: any = localStorage.getItem("trainObj")
+    this.trainObj = JSON.parse(temp)
+    this.fromStationId = this.trainObj.fromStation.stationID
+    this.toStationId = this.trainObj.toStation.stationID
+    this.searchDate = this.trainObj.date
     this.getAllStations()
     this.getTrainsBetweenStation()
     this.titleData.setTitle(this.title)
@@ -59,11 +57,11 @@ export class SearchComponent implements OnInit {
   getTrainsBetweenStation() {
     this._railwayService.getAllTrainBetweenStations(this.fromStationId, this.toStationId, this.searchDate).subscribe((res: any) => {
 
-      if (res.data.length > 0) {
-        this.trainList = res.data
-      } else {
+      if (res.data.length == 0) {
         this.toastr.warning("There is no train found between 2 stations.")
       }
+      this.trainList = res.data
+
 
     })
   }

@@ -7,7 +7,7 @@ import { BookingComponent } from './pages/booking/booking.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'search/:fromStation/:toStation/:date', component: SearchComponent },
+  { path: 'train-list', component: SearchComponent },
   { path: 'booking', component: BookingComponent },
 
 ];
@@ -15,7 +15,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabledBlocking'
-})],
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

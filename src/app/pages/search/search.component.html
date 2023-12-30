@@ -25,7 +25,8 @@
 </div>
 
 <div class="container-fluid pt-2">
-  <p style="border: 1px solid;padding: 5px;margin-top: 5px;"><strong>{{trainList.length}}</strong> {{ "RESULT_FOUND_FOR" | translate}}
+  <p style="border: 1px solid;padding: 5px;margin-top: 5px;"><strong>{{trainList.length}}</strong>
+    {{ "RESULT_FOUND_FOR" | translate}}
     <strong>{{getFromStation()}}</strong>
     {{ "TO" | translate}} <strong>{{getToStation()}}</strong> {{searchDate |date:'dd-MM-yyyy'}}</p>
   <div class="row">
@@ -53,5 +54,10 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row text-center">
+  <div *ngIf="trainList.length==0">
+    <h5>There is no direct train between 2 stations.</h5>
   </div>
 </div>
