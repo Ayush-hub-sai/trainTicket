@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { TranslateService } from '@ngx-translate/core';
 import { RailwayService } from 'src/app/services/railway/railway.service';
 import { isPlatformBrowser } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
 // import { login, loginResponse } from 'src/app/interface/authInterface';
 // import { LoginResponse } from 'src/app/interface/authInterface';
 @Component({
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
   constructor(private modalService: NgbModal,
     public _translateService: TranslateService,
     private _railwayService: RailwayService,
+    private _spinnerService: NgxSpinnerService,
     @Inject(PLATFORM_ID) private platformId: Object) {
 
     _translateService.addLangs(['en', 'hi'])
@@ -61,8 +63,12 @@ export class HeaderComponent implements OnInit {
   }
 
   LogOut() {
+    this._spinnerService.show()
     localStorage.removeItem("loginUser")
     this.loginObj = undefined
+    setTimeout(() => {
+      this._spinnerService.hide()
+    }, 2000);
   }
 
 }

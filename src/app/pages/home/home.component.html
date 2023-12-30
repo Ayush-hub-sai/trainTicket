@@ -10,17 +10,18 @@
                 <div class="row">
                   <div class="col-6">
                     <label class="form-label" for="fromStation">{{ "FROM_STATION" | translate}}</label>
-                    <select id="fromStation" class="form-select" [(ngModel)]="fromStationId">
+                    <select id="fromStation" class="form-select" [(ngModel)]="fromStation">
                       <option value="From Station">From Station</option>
-                      <option [value]="station.stationID" *ngFor="let station of stationList">{{station.stationName}}
-                      </option>
+                      <!-- here ngValue is used for get obj from list -->
+                      <option [ngValue]="station" *ngFor="let station of stationList">{{ station.stationName }}</option>
                     </select>
+
                   </div>
                   <div class="col-6">
                     <label class="form-label" for="toStation">{{ "TO_STATION" | translate}}</label>
-                    <select id="toStation" class="form-select" [(ngModel)]="toStationId">
+                    <select id="toStation" class="form-select" [(ngModel)]="toStation">
                       <option value="To Station">Select To Station</option>
-                      <option [value]="station.stationID" *ngFor="let station of stationList">{{station.stationName}}
+                      <option [ngValue]="station" *ngFor="let station of stationList">{{station.stationName}}
                       </option>
                     </select>
                   </div>

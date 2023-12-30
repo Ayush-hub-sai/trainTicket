@@ -14,8 +14,8 @@ import { RailwayService } from 'src/app/services/railway/railway.service';
 export class HomeComponent implements OnInit {
 
   stationList: IStation[] = []
-  fromStationId: string | null = 'From Station'; // Set the default placeholder
-  toStationId: string | null = 'To Station';
+  fromStation: any | null = 'From Station'; // Set the default placeholder
+  toStation: any | null = 'To Station';
   traveldate: any
 
   constructor(
@@ -40,6 +40,15 @@ export class HomeComponent implements OnInit {
   }
 
   search() {
-    this.router.navigate(['search', this.fromStationId, this.toStationId, this.traveldate])
+    let trainObj: any = {
+      fromStation: this.fromStation.stationName,
+      toStation: this.toStation.stationName,
+      date: this.traveldate
+    }
+
+    localStorage.setItem("trainObj", JSON.stringify(trainObj))
+    this.router.navigate(['search', this.fromStation.stationID, this.toStation.stationID, this.traveldate])
   }
+
+  
 }

@@ -6,6 +6,8 @@ import { RailwayService } from 'src/app/services/railway/railway.service';
 import { BookingComponent } from '../booking/booking.component';
 import { Title, Meta } from '@angular/platform-browser'
 import { TranslateService } from '@ngx-translate/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-search',
@@ -24,6 +26,8 @@ export class SearchComponent implements OnInit {
     private activateUrl: ActivatedRoute,
     private _railwayService: RailwayService,
     public _translateService: TranslateService,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
     private titleData: Title, private meta: Meta) {
 
     this.activateUrl?.params?.subscribe((res: any) => {
@@ -35,10 +39,11 @@ export class SearchComponent implements OnInit {
     this._railwayService.myBehaviorSubject.subscribe((res: any) => {
       _translateService.use(res)
     })
-    
+
   }
 
   ngOnInit(): void {
+    
     this.getAllStations()
     this.getTrainsBetweenStation()
     this.titleData.setTitle(this.title)
@@ -53,7 +58,13 @@ export class SearchComponent implements OnInit {
 
   getTrainsBetweenStation() {
     this._railwayService.getAllTrainBetweenStations(this.fromStationId, this.toStationId, this.searchDate).subscribe((res: any) => {
-      this.trainList = res.data
+
+      if (res.data.length > 0) {
+        this.trainList = res.data
+      } else {
+        this.toastr.warning("There is no train found between 2 stations.")
+      }
+
     })
   }
 
