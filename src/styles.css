@@ -20,16 +20,6 @@
   border: 1px solid gray !important;
 }
 
-header {
-  text-align: center;
-}
-
-header img {
-  max-width: 100%;
-  height: auto;
-}
-
-header h1 {
-  font-size: 2em;
-  /* Adjust as needed */
+.cursor-pointer {
+  cursor: pointer !important;
 }
